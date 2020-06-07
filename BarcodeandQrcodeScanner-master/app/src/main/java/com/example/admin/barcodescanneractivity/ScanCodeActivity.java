@@ -7,6 +7,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 import android.Manifest;
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.media.Ringtone;
@@ -36,21 +37,18 @@ public class ScanCodeActivity extends AppCompatActivity implements ZXingScannerV
 
         MainActivity.resulttextview.setText(result.getText());
 
-        try {
-        ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 200);
-        tg.startTone(ToneGenerator.TONE_PROP_BEEP);
+            try {
+            ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 200);
+            tg.startTone(ToneGenerator.TONE_PROP_BEEP);
+            }catch (Exception e){
+                Toast.makeText(this,"Error on beep ",Toast.LENGTH_SHORT).show();
+            }
 
-//            Uri beepSound = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + File.pathSeparator + File.separator + getPackageName() + "/raw/beep.wav");
-//            Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), beepSound);
-//            r.play();
-
-    }catch (Exception e){
-        Toast.makeText(this,"Error on beep ",Toast.LENGTH_SHORT).show();
+            finish();
+            Intent res = new Intent(this,resultPage.class);
+            res.putExtra("barCode",result.getText());
+            startActivity(res);
     }
-
-
-    onBackPressed();
-}
 
     @Override
     protected void onPause() {

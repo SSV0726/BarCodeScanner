@@ -67,6 +67,7 @@
             android:width="0dp"
             android:background="@drawable/whitebutton"
             android:text=" Scan "
+            android:onClick="onScanPressed"
             android:textAlignment="center"
             android:textAllCaps="false"
 

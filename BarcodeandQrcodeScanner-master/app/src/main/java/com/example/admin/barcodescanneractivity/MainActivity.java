@@ -14,17 +14,35 @@ import android.widget.TextView;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
     public static TextView resulttextview;
+    public static String scanned;
+
     Button scanbutton;
 
     private RecyclerView recyclerView;
     private  RecyclerView.Adapter adapter;
-    private List<ListItem> listItems;
+    public static List<ListItem>  listItems = new ArrayList<>();
+
+
+
+    public void onScanPressed(View view){
+
+        startActivity(new Intent(getApplicationContext(), ScanCodeActivity.class));
+
+//
+//        Intent res = getIntent();
+//        String barCode = res.getStringExtra("barCode");
+//
+//        Toast.makeText(this,barCode,Toast.LENGTH_LONG).show();
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,26 +52,28 @@ public class MainActivity extends AppCompatActivity {
         resulttextview = findViewById(R.id.barcodetextview);
         scanbutton = findViewById(R.id.scanbutton);
 
-        scanbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), ScanCodeActivity.class));
-            }
-        });
+//        scanbutton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(getApplicationContext(), ScanCodeActivity.class));
+//            }
+//        });
 
 
-        //---------------------------------------------------
+//---------------------------------------------------
+//        // TO populate recyler view with dummy data
+//        for(int i=0;i<10;i++){
+//            listItems.add(new ListItem("head"+ (i+1) , "lorem ispum description ") );
+//        }
+
+
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        listItems = new ArrayList<>();
-        for(int i=0;i<10;i++){
-            ListItem li = new ListItem("head"+ (i+1) , "lorem ispum description ");
-            listItems.add(li);
-        }
-
         adapter = new MyAdapter(listItems,this);
         recyclerView.setAdapter(adapter);
+
+
 
     }
 }
