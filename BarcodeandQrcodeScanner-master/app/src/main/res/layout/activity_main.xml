@@ -8,18 +8,18 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
     <TextView
         android:id="@+id/barcodetextview"
-        android:layout_width="383dp"
-        android:layout_height="573dp"
+        android:layout_width="336dp"
+        android:layout_height="30dp"
         android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.589"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.321" />
-
+        app:layout_constraintVertical_bias="0.857" />
 
     <Button
         android:id="@+id/button"
@@ -41,6 +41,7 @@
 
     <LinearLayout
 
+        android:id="@+id/linearLayout"
         android:layout_width="341dp"
         android:layout_height="70dp"
         android:foregroundGravity="bottom"
@@ -54,11 +55,11 @@
 
         <Button
             android:id="@+id/scanbutton"
-            android:layout_height="match_parent"
             android:layout_width="0dp"
-            android:width="0dp"
+            android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:layout_weight="1"
+            android:width="0dp"
             android:background="@drawable/whitebutton"
             android:text=" Scan "
             android:textAlignment="center"
@@ -68,8 +69,8 @@
 
         <Button
             android:id="@+id/checkout"
-            android:layout_height="match_parent"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="@drawable/whitebutton"
@@ -80,6 +81,17 @@
 
 
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="363dp"
+        android:layout_height="510dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.102" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
