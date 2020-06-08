@@ -32,6 +32,7 @@ public class resultPage extends AppCompatActivity{
 
 
     Button scanbutton;
+    int k=0;
     public static String scanned;
     public static TextView resulttextview;
     private RecyclerView recyclerView;
@@ -48,7 +49,7 @@ public class resultPage extends AppCompatActivity{
 
     public void addItemtoList(String barCode){
 
-        listItems.add(new ListItem(barCode,"new Item"));
+        listItems.add(new ListItem(barCode,"new Item",k,"random"));
         Toast.makeText(this,barCode,Toast.LENGTH_LONG).show();
 
 
@@ -66,11 +67,12 @@ public class resultPage extends AppCompatActivity{
             @Override
             public void onResponse(String response) {
 
+                k = listItems.size();
                 Log.i("api",response);
                 GsonBuilder gsonBuilder = new GsonBuilder();
                 Gson gson = gsonBuilder.create();
                 users[] users = gson.fromJson(response , users[].class);
-                updatedListItems.add( new ListItem(users[0].getLogin(),users[0].getNodeId()));
+                updatedListItems.add( new ListItem(users[k].getLogin(),users[k].getNodeId(),k,"random"));
                 Log.i("api","added to updated list");
 
                 adapter = new MyAdapter(updatedListItems,getApplicationContext());

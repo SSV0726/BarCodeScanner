@@ -7,7 +7,7 @@ public class ListItem {
     public int count;
     public String imageURL;
 
-    public ListItem(String heading, String desc) {
+    public ListItem(String heading, String desc,int count,String imageURL) {
         this.heading = heading;
         this.desc = desc;
         this.count = count;

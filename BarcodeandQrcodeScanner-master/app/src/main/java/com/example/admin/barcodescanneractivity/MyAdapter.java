@@ -11,7 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
+import java.util.zip.Inflater;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
@@ -43,6 +46,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         holder.head.setText( itemofthelist.getHeading());
         holder.desc.setText(itemofthelist.getDesc());
+        holder.count.setText(Integer.toString(itemofthelist.getCount()));
+        holder.prodImage.setImageResource(R.drawable.loading);
+
+        Glide.with(context).load("https://koenig-media.raywenderlich.com/uploads/2019/05/Glide-feature-1.png").into(holder.prodImage);
     }
 
     @Override
