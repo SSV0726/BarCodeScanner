@@ -47,9 +47,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.head.setText( itemofthelist.getHeading());
         holder.desc.setText(itemofthelist.getDesc());
         holder.count.setText(Integer.toString(itemofthelist.getCount()));
-        holder.prodImage.setImageResource(R.drawable.loading);
 
-        Glide.with(context).load("https://koenig-media.raywenderlich.com/uploads/2019/05/Glide-feature-1.png").into(holder.prodImage);
+        if( itemofthelist.imageURL.compareTo("loading") == 0) {
+            holder.prodImage.setImageResource(R.drawable.loading);
+        }else{
+
+            String url = itemofthelist.imageURL;
+            Glide.with(context).load(url).into(holder.prodImage);
+        }
     }
 
     @Override

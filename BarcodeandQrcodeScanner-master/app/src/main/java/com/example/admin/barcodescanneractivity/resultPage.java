@@ -49,7 +49,7 @@ public class resultPage extends AppCompatActivity{
 
     public void addItemtoList(String barCode){
 
-        listItems.add(new ListItem(barCode,"new Item",k,"random"));
+        listItems.add(new ListItem(barCode,"new Item",k,"loading"));
         Toast.makeText(this,barCode,Toast.LENGTH_LONG).show();
 
 
@@ -72,7 +72,7 @@ public class resultPage extends AppCompatActivity{
                 GsonBuilder gsonBuilder = new GsonBuilder();
                 Gson gson = gsonBuilder.create();
                 users[] users = gson.fromJson(response , users[].class);
-                updatedListItems.add( new ListItem(users[k].getLogin(),users[k].getNodeId(),k,"random"));
+                updatedListItems.add( new ListItem(users[k].getLogin(),users[k].getNodeId(),k,users[k].getAvatarUrl()));
                 Log.i("api","added to updated list");
 
                 adapter = new MyAdapter(updatedListItems,getApplicationContext());
