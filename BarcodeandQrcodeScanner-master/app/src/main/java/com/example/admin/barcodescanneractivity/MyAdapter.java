@@ -4,10 +4,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     List<ListItem> listItems;
     private Context context;
+
 
     public MyAdapter(List<ListItem> lst , Context cntxt){
         this.listItems =lst;
@@ -35,29 +38,32 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         ListItem itemofthelist = listItems.get(position);
 
         holder.head.setText( itemofthelist.getHeading());
         holder.desc.setText(itemofthelist.getDesc());
-
-
     }
 
     @Override
     public int getItemCount() {
-        return listItems.size();
+         return listItems.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView head;
         public TextView desc;
+        public TextView count;
+        public ImageView prodImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             head = itemView.findViewById(R.id.Heading);
             desc = itemView.findViewById(R.id.description);
+            count = itemView.findViewById(R.id.count);
+            prodImage = itemView.findViewById(R.id.prodImage);
         }
     }
 }

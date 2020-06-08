@@ -15,6 +15,7 @@ import android.media.RingtoneManager;
 import android.media.ToneGenerator;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.zxing.Result;
@@ -30,12 +31,12 @@ public class ScanCodeActivity extends AppCompatActivity implements ZXingScannerV
         super.onCreate(savedInstanceState);
         scannerView = new ZXingScannerView(this);
         setContentView(scannerView);
+
+        Log.i("myLogs"," Inside Scan Activity  ");
     }
 
     @Override
     public void handleResult(Result result) {
-
-        MainActivity.resulttextview.setText(result.getText());
 
             try {
             ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 200);
@@ -47,6 +48,7 @@ public class ScanCodeActivity extends AppCompatActivity implements ZXingScannerV
             finish();
             Intent res = new Intent(this,resultPage.class);
             res.putExtra("barCode",result.getText());
+            Log.i("myLogs"," will be starting res activity now ");
             startActivity(res);
     }
 
@@ -55,13 +57,6 @@ public class ScanCodeActivity extends AppCompatActivity implements ZXingScannerV
         super.onPause();
         scannerView.stopCamera();
     }
-
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        scannerView.setResultHandler(this);
-//        scannerView.startCamera();
-//    }
 
     @Override
     protected void onPostResume() {
