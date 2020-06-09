@@ -26,6 +26,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -71,8 +72,6 @@ public class resultPage extends AppCompatActivity{
         String completeURL = URL + barCode;
         Log.i("mylogs",completeURL);
 
-
-
 //        StringRequest req = new StringRequest(completeURL, new Response.Listener<String>(){
 //            @Override
 //            public void onResponse(String response) {
@@ -98,16 +97,26 @@ public class resultPage extends AppCompatActivity{
 //            }
 //        });
 
-
         JsonObjectRequest jobjreq = new JsonObjectRequest(Request.Method.GET, completeURL, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                 Log.i("mylogs",response.toString());
 
-//
-//               adapter = new MyAdapter(updatedListItems,getApplicationContext());
-//               recyclerView.setAdapter(adapter);
+
+                try {
+
+                    updatedListItems.add( new ListItem(response.getString("name"),response.getString("desc"),1,response.getString("imageUrl")));
+
+                    Log.i("mylogs","added to updated list");
+                    adapter = new MyAdapter(updatedListItems,getApplicationContext());
+                    recyclerView.setAdapter(adapter);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.i("mylogs","we got response but error while parsin in try catch ");
+                }
+
 
 
             }
