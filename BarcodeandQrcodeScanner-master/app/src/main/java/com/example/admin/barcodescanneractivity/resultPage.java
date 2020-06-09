@@ -71,38 +71,12 @@ public class resultPage extends AppCompatActivity{
         String completeURL = URL + barCode;
         Log.i("mylogs",completeURL);
 
-//        StringRequest req = new StringRequest(completeURL, new Response.Listener<String>(){
-//            @Override
-//            public void onResponse(String response) {
-//
-//                Log.i("mylogs",response);
-//
-//                GsonBuilder gsonBuilder = new GsonBuilder();
-//                Gson gson = gsonBuilder.create();
-////                users[] users = gson.fromJson(response , users[].class);
-//                barcodes barcodeRes = gson.fromJson(response,barcodes.class);
-//
-//
-//                updatedListItems.add( new ListItem(users[k].getLogin(),users[k].getNodeId(),k,users[k].getAvatarUrl()));
-//                Log.i("mylogs","added to updated list");
-//
-//                adapter = new MyAdapter(updatedListItems,getApplicationContext());
-//                recyclerView.setAdapter(adapter);
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Toast.makeText(getApplicationContext(),"Some error Occured",Toast.LENGTH_LONG).show();
-//            }
-//        });
 
         JsonObjectRequest jobjreq = new JsonObjectRequest(Request.Method.GET, completeURL, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                 Log.i("mylogs",response.toString());
-
-
                 try {
 
                     updatedListItems.remove(updatedListItems.size() - 1);
@@ -116,8 +90,6 @@ public class resultPage extends AppCompatActivity{
                     e.printStackTrace();
                     Log.i("mylogs","we got response but error while parsing in try catch ");
                 }
-
-
 
             }
         }, new Response.ErrorListener() {

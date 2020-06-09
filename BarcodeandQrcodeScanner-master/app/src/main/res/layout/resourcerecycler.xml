@@ -6,7 +6,7 @@
     android:layout_height="111dp"
     android:padding="3dp"
     android:layout_margin="3dp"
-    android:background="@drawable/card">
+    android:background="@drawable/whitebutton">
 
     <LinearLayout
 
@@ -32,7 +32,7 @@
             app:srcCompat="@drawable/addtocart"
             android:padding="6dp"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/whitebutton"/>
+            />
 
 
         <LinearLayout
@@ -124,8 +124,7 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:id="@+id/add"
-
+                    android:id="@+id/addd"
                     android:layout_marginTop="10dp"
                     android:layout_width="35dp"
                     android:layout_height="wrap_content"

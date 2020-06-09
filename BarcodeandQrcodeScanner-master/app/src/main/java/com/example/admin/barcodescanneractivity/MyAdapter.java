@@ -1,6 +1,7 @@
 package com.example.admin.barcodescanneractivity;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,16 +41,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
-        ListItem itemofthelist = listItems.get(position);
+        final ListItem itemofthelist = listItems.get(position);
 
         holder.head.setText( itemofthelist.getHeading());
         holder.price.setText( Integer.toString(itemofthelist.getPrice()) );
         holder.count.setText(Integer.toString(itemofthelist.getCount()));
 
         if( itemofthelist.imageURL.compareTo("loading") == 0) {
-            Glide.with(context).load(R.drawable.loading).into(holder.prodImage);
+
+            //Glide.with(context).load(R.drawable.loading).into(holder.prodImage);
+            Glide.with(context).asGif().load(R.raw.load).into(holder.prodImage);
+
         }else{
 
             String url = itemofthelist.imageURL;
@@ -57,6 +61,32 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         }
 
 
+        holder.addQuantity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("mylogs", " Add Quantity  Clicked ");
+                int curCount = itemofthelist.getCount();
+                itemofthelist.setCount(curCount + 1 );
+                notifyDataSetChanged();
+            }
+        });
+
+        holder.subQuantity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("mylogs", " subQuantity Clicked ");
+                int curCount = itemofthelist.getCount();
+
+                if(curCount == 1){
+                    listItems.remove(position);
+
+                }else {
+                    itemofthelist.setCount(curCount - 1);
+                }
+
+                notifyDataSetChanged();
+            }
+        });
 
     }
 
@@ -72,6 +102,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public TextView price;
         public TextView count;
         public ImageView prodImage;
+        public ImageView addQuantity;
+        public ImageView subQuantity;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -80,6 +112,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             price = itemView.findViewById(R.id.price);
             count = itemView.findViewById(R.id.count);
             prodImage = itemView.findViewById(R.id.prodImage);
+            addQuantity = itemView.findViewById(R.id.addd);
+            subQuantity = itemView.findViewById(R.id.sub);
         }
     }
 }
