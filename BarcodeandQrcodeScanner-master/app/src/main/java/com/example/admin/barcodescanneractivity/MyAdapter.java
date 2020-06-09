@@ -49,18 +49,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.count.setText(Integer.toString(itemofthelist.getCount()));
 
         if( itemofthelist.imageURL.compareTo("loading") == 0) {
-            holder.prodImage.setImageResource(R.drawable.loading);
+            Glide.with(context).load(R.drawable.loading).into(holder.prodImage);
         }else{
 
             String url = itemofthelist.imageURL;
             Glide.with(context).load(url).into(holder.prodImage);
         }
+
+
+
     }
 
     @Override
     public int getItemCount() {
          return listItems.size();
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 

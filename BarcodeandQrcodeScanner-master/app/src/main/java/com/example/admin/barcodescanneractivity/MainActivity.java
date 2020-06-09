@@ -12,6 +12,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), ScanCodeActivity.class));
     }
 
+    public void firestore(View view){
+        //startActivity(new Intent(getApplicationContext(),addtofirebase.class));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
