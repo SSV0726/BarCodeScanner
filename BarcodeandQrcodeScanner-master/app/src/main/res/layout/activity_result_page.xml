@@ -7,22 +7,6 @@
     android:background="#ddd"
     tools:context=".resultPage">
 
-    <TextView
-        android:id="@+id/barcodetextview"
-        android:layout_width="139dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="40dp"
-        android:text="Total Price :  "
-        android:textAlignment="viewEnd"
-        android:textAllCaps="false"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="24sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975" />
-
     <LinearLayout
 
     android:id="@+id/linearLayout"
@@ -44,8 +28,10 @@
         android:layout_margin="5dp"
         android:layout_weight="1"
         android:width="0dp"
-        android:background="@drawable/whitebutton"
+        android:background="@drawable/blackbutton"
+        android:textColor="#fff"
         android:text=" Scan "
+        android:textStyle="bold"
         android:onClick="onScanPressed"
         android:textAlignment="center"
         android:textAllCaps="false"
@@ -58,10 +44,13 @@
         android:layout_height="match_parent"
         android:layout_margin="5dp"
         android:layout_weight="1"
-        android:background="@drawable/whitebutton"
-        android:text="  pageresult  "
+        android:background="@drawable/blackbutton"
+        android:textColor="#fff"
+        android:text="  Chekout  "
+        android:onClick="onCheckoutPressed"
         android:textAlignment="center"
         android:textAllCaps="false"
+        android:textStyle="bold"
         android:textSize="25sp" />
 
 
@@ -69,30 +58,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
-        android:layout_width="380dp"
-        android:layout_height="585dp"
-        app:layout_constraintBottom_toTopOf="@+id/barcodetextview"
+        android:layout_width="362dp"
+        android:layout_height="625dp"
+        android:onClick="onCheckoutPressed"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.695"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.764" />
-
-    <TextView
-        android:id="@+id/finalPrice"
-        android:layout_width="108dp"
-        android:layout_height="35dp"
-        android:text="329"
-        android:textAlignment="center"
-        android:textColor="@color/colorAccent"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="0.416"
-        app:layout_constraintStart_toEndOf="@+id/barcodetextview"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.884" />
+        app:layout_constraintVertical_bias="0.772" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.LauncherActivity;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import android.os.AsyncTask;
@@ -51,6 +53,30 @@ public class resultPage extends AppCompatActivity{
         startActivity(new Intent(getApplicationContext(), ScanCodeActivity.class));
     }
 
+    public void onCheckoutPressed(View view){
+
+        int price = 0 ;
+        for(ListItem it : updatedListItems){
+            price += it.getPrice()*it.getCount();
+        }
+
+        Intent checkout = new Intent(this,checkout.class);
+        checkout.putExtra("finalPrice" , Integer.toString(price));
+        Log.i("mylogs"," on checkout presses " + Integer.toString(price));
+        startActivity(checkout);
+    }
+
+
+//    public void updateFinalPrice(){
+//
+//        int price = 0 ;
+//        for(ListItem it : updatedListItems){
+//            price += it.getPrice()*it.getCount();
+//        }
+//
+//        TextView finalPrice = findViewById(R.id.finalPrice);
+//        finalPrice.setText(Integer.toString(price));
+//    }
 
     public void addItemtoList(String barCode){
 
@@ -81,7 +107,6 @@ public class resultPage extends AppCompatActivity{
 
                     updatedListItems.remove(updatedListItems.size() - 1);
                     updatedListItems.add( new ListItem(response.getString("name"),response.getString("desc"),response.getInt("price"),1,response.getString("imageUrl")));
-
                     Log.i("mylogs","added to updated list");
                     adapter = new MyAdapter(updatedListItems,getApplicationContext());
                     recyclerView.setAdapter(adapter);
@@ -109,6 +134,7 @@ public class resultPage extends AppCompatActivity{
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_page);
+
 
 
         Intent res = getIntent();
