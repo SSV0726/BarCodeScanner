@@ -5,11 +5,15 @@ public class ListItem {
     public String heading;
     public String desc;
     public int count;
+    public int price;
     public String imageURL;
 
-    public ListItem(String heading, String desc,int count,String imageURL) {
+
+
+    public ListItem(String heading, String desc, int price, int count, String imageURL) {
         this.heading = heading;
         this.desc = desc;
+        this.price = price;
         this.count = count;
         this.imageURL = imageURL;
     }
@@ -17,6 +21,11 @@ public class ListItem {
     public int getCount() {
         return count;
     }
+
+    public int getPrice() {
+        return price;
+    }
+
 
     public void setCount(int count) {
         this.count = count;

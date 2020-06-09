@@ -37,7 +37,6 @@ public class resultPage extends AppCompatActivity{
 
 
     Button scanbutton;
-    int k=0;
     public static String scanned;
     public static TextView resulttextview;
     private RecyclerView recyclerView;
@@ -55,7 +54,7 @@ public class resultPage extends AppCompatActivity{
 
     public void addItemtoList(String barCode){
 
-        listItems.add(new ListItem(barCode,"new Item",k,"loading"));
+        updatedListItems.add(new ListItem(barCode,"Item not added in database",0,1,"loading"));
         Toast.makeText(this,barCode,Toast.LENGTH_LONG).show();
 
 
@@ -63,7 +62,7 @@ public class resultPage extends AppCompatActivity{
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MyAdapter(listItems,this);
+        adapter = new MyAdapter(updatedListItems,this);
         recyclerView.setAdapter(adapter);
 
 
@@ -106,7 +105,8 @@ public class resultPage extends AppCompatActivity{
 
                 try {
 
-                    updatedListItems.add( new ListItem(response.getString("name"),response.getString("desc"),1,response.getString("imageUrl")));
+                    updatedListItems.remove(updatedListItems.size() - 1);
+                    updatedListItems.add( new ListItem(response.getString("name"),response.getString("desc"),response.getInt("price"),1,response.getString("imageUrl")));
 
                     Log.i("mylogs","added to updated list");
                     adapter = new MyAdapter(updatedListItems,getApplicationContext());
@@ -114,7 +114,7 @@ public class resultPage extends AppCompatActivity{
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Log.i("mylogs","we got response but error while parsin in try catch ");
+                    Log.i("mylogs","we got response but error while parsing in try catch ");
                 }
 
 

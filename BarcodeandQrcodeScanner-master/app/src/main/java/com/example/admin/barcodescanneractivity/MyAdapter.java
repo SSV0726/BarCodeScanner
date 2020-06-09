@@ -45,7 +45,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         ListItem itemofthelist = listItems.get(position);
 
         holder.head.setText( itemofthelist.getHeading());
-        holder.desc.setText(itemofthelist.getDesc());
+        holder.price.setText( Integer.toString(itemofthelist.getPrice()) );
         holder.count.setText(Integer.toString(itemofthelist.getCount()));
 
         if( itemofthelist.imageURL.compareTo("loading") == 0) {
@@ -69,7 +69,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView head;
-        public TextView desc;
+        public TextView price;
         public TextView count;
         public ImageView prodImage;
 
@@ -77,7 +77,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             super(itemView);
 
             head = itemView.findViewById(R.id.Heading);
-            desc = itemView.findViewById(R.id.description);
+            price = itemView.findViewById(R.id.price);
             count = itemView.findViewById(R.id.count);
             prodImage = itemView.findViewById(R.id.prodImage);
         }
