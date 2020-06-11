@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void allProducts(View view){
+        Log.i("mylogs","allproducts button pressed ");
         startActivity(new Intent(getApplicationContext(),allProducts.class));
     }
 

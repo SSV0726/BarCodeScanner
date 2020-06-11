@@ -16,7 +16,9 @@ public class checkout extends AppCompatActivity {
 
     public void onPayPressed(View view){
 
-        Toast.makeText(this , "Payment Activity Next ", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this , "Payment Activity Next ", Toast.LENGTH_SHORT).show();
+        Intent success = new Intent(getApplicationContext(), com.example.admin.barcodescanneractivity.success.class);
+        startActivity(success);
     }
 
     @Override
@@ -26,7 +28,8 @@ public class checkout extends AppCompatActivity {
 
         Log.i("mylogs", "inside checkout Activity ");
         ImageView proceed = findViewById(R.id.proceedtopay);
-        Glide.with(getApplicationContext()).asGif().load(R.raw.proceedtopay).into(proceed);
+
+
 
         Intent prev = getIntent();
         String finalPrice = prev.getStringExtra("finalPrice");

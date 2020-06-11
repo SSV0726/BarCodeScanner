@@ -81,7 +81,8 @@ public class resultPage extends AppCompatActivity{
     public void addItemtoList(String barCode){
 
         updatedListItems.add(new ListItem(barCode,"Item not added in database",0,1,"loading"));
-        Toast.makeText(this,barCode,Toast.LENGTH_LONG).show();
+        //----------------------------------
+        //Toast.makeText(this,barCode,Toast.LENGTH_LONG).show();
 
 
         // code to put listitems into recylerView
