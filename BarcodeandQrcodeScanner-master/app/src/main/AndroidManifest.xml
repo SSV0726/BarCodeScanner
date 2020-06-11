@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".success"></activity>
+        <activity android:name=".paymentwebview"></activity>
+        <activity android:name=".success" />
         <activity android:name=".checkout" />
         <activity android:name=".allProducts" />
         <activity android:name=".addtofirebase" />

@@ -17,8 +17,11 @@ public class checkout extends AppCompatActivity {
     public void onPayPressed(View view){
 
         //Toast.makeText(this , "Payment Activity Next ", Toast.LENGTH_SHORT).show();
-        Intent success = new Intent(getApplicationContext(), com.example.admin.barcodescanneractivity.success.class);
-        startActivity(success);
+//        Intent success = new Intent(getApplicationContext(), com.example.admin.barcodescanneractivity.success.class);
+//        startActivity(success);
+
+        Intent payment = new Intent(getApplicationContext(), paymentwebview.class);
+        startActivity(payment);
     }
 
     @Override
@@ -27,14 +30,13 @@ public class checkout extends AppCompatActivity {
         setContentView(R.layout.activity_checkout);
 
         Log.i("mylogs", "inside checkout Activity ");
-        ImageView proceed = findViewById(R.id.proceedtopay);
 
+        ImageView proceed = findViewById(R.id.proceedtopay);
+        Glide.with(this).asGif().load(R.raw.proceedtopay).into(proceed);
 
 
         Intent prev = getIntent();
         String finalPrice = prev.getStringExtra("finalPrice");
-
-
 
         TextView amount = findViewById(R.id.amount);
         amount.setText(finalPrice + " ₹ ");
